@@ -1,0 +1,48 @@
+### git 命令
+- git init
+- git add #把文件修改添加到暂存区
+- git commint -m  # 把暂存区的所有内容提交到当前分支
+- git diff xxxfile
+- git status
+- git log #显示从最近到最远的提交日志
+- git reset --hard HEAD^  # HEAD^^ HEAD~13   HEAD~n   #回退版本
+- git reflog  # 查看每一次命令
+- git checkout --file 将工作区撤销修改到上一次add 或 commit 的状态
+- git checkout 切换分支
+- git reset HEAD <file> # 把暂存区的修改撤销，重新放回工作区
+- git rm <file> 或 git add <file> #在删除文件后提交修改到暂存区
+- git checkout -- deletedFileName # 可以撤销删除， 
+- git checkout 其实是版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以"一键还原"
+- ssh-key -t rsa -C "youremail@exam.com"
+- git remote add origin git@server-name:path/repo-name.git  # origin 为别名
+- git push -u origin master #第一次推送master分支的所有内容；此后，每次本地提交后，只要有必要，就可以使用命令git push origin master 
+- git clone 
+- git checkout -b branchName #创建分支并切换 相当于 git branch branchName; git checkout branchName 两条指令
+- git branch #查看当前分支
+- git switch 也可以切换分支
+- git log --graph #查看分支合并图
+- git merge --no-ff -m "merge with no-ff" dev  #本次合并要创建一个新的commit，所以加上 -m 参数， 合并后的历史有分支，能看出来曾经做过合并
+- git stash #保存工作区（工作现场）
+- git stash list # 查看保存的现场
+- git stash apply # 恢复现场但不删除现场
+- git stash pop # 恢复现场并删除现场
+- git cherry-pick #复制一个特定的提交到当前分支
+- git branch -D feature-vulcan  # 分支还没有被合并时，需要删除，需要使用-D 强制删除
+- git romote # 查看远程仓库的信息  加 -v 显示详细信息
+- git push  origin master # 将推送分支master推送到 别名为origin的远程仓库
+- git branch --set-upstream-to <branch-name> origin/<branch-name> #将本地分支 与 远程分支建立链接
+- git rebase #rebase操作可以把本地未push的分叉提交历史整理成直线；
+- git tag #查看所有标签
+- git tag <tagname> [commitID] #奖励一个标签，默认给HEAD, 可以指定commitID
+- git tag -a <tagname> -m "msgggggggggg" 
+- git show <tagName> #查看标签信息
+- git tag -d v0.1 #在本地删除v0.1 标签
+- git push origin v1.0 #推送某个标签到远程
+- git push origin --tags #一次性推送全部尚未推送到远程的本地标签
+- git tag -d v0.9 ; git push orgin :refs/tags/v0.9 #删除已经推送的标签，需要先在本地删除，再利用push命令
+
+#### git reset 指令 参数--soft --hard --mixed(或者什么都不写，默认为mixed) 的区别
+
+- --soft: 只更改引用，使其指向倒退的目标版本
+- --mixed: 改引用指向倒退的目标版本， 重置暂存区，不改变工作区
+- --hard: 改引用指向倒退的目标版本， 重置暂存区和工作区
